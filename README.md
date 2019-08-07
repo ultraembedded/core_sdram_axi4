@@ -22,6 +22,9 @@ Verified under simulation against a couple of SDRAM models and on various Xilinx
 * AS4C16M16S
 
 ##### Configuration
+* Top: sdram_axi
+* Clock: clk_i
+* Reset: rst_i - Asynchronous, active high
 * parameter SDRAM_MHZ - Clock speed (verified with 50MHz & 100MHz)
 * parameter SDRAM_ADDR_W - Total SDRAM address width (cols+rows+banks)
 * parameter SDRAM_COL_W - Number of column bits
