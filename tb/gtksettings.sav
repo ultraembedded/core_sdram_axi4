@@ -1,0 +1,108 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Tue Aug  6 20:41:10 2019
+[*]
+[treeopen] tb.
+[treeopen] tb.MEM.
+[treeopen] tb.MEM.Vsdram_axi.
+[treeopen] tb.MEM.Vsdram_axi.sdram_axi.
+[treeopen] tb.MEM.Vsdram_axi.sdram_axi.u_axi.
+[sst_width] 465
+[signals_width] 432
+[sst_expanded] 1
+[sst_vpaned_height] 180
+@200
+-
+@800200
+-AXI
+@28
+tb.MEM.Vsdram_axi.sdram_axi.clk_i
+tb.MEM.Vsdram_axi.sdram_axi.inport_awvalid_i
+@22
+tb.MEM.Vsdram_axi.sdram_axi.inport_awaddr_i[31:0]
+tb.MEM.Vsdram_axi.sdram_axi.inport_awlen_i[7:0]
+@28
+[color] 2
+tb.MEM.Vsdram_axi.sdram_axi.inport_awready_o
+@200
+-
+@28
+tb.MEM.Vsdram_axi.sdram_axi.inport_wvalid_i
+@22
+tb.MEM.Vsdram_axi.sdram_axi.inport_wdata_i[31:0]
+@29
+[color] 2
+tb.MEM.Vsdram_axi.sdram_axi.inport_wready_o
+@200
+-
+@28
+tb.MEM.Vsdram_axi.sdram_axi.inport_bvalid_o
+@200
+-
+@28
+tb.MEM.Vsdram_axi.sdram_axi.inport_arvalid_i
+@22
+tb.MEM.Vsdram_axi.sdram_axi.inport_araddr_i[31:0]
+tb.MEM.Vsdram_axi.sdram_axi.inport_arlen_i[7:0]
+@28
+[color] 2
+tb.MEM.Vsdram_axi.sdram_axi.inport_arready_o
+@200
+-
+@28
+tb.MEM.Vsdram_axi.sdram_axi.inport_rvalid_o
+@22
+tb.MEM.Vsdram_axi.sdram_axi.inport_rdata_o[31:0]
+@1000200
+-AXI
+@200
+-
+@800200
+-RAM
+@28
+tb.MEM.Vsdram_axi.sdram_axi.ram_rd_w
+@22
+tb.MEM.Vsdram_axi.sdram_axi.ram_wr_w[3:0]
+tb.MEM.Vsdram_axi.sdram_axi.u_axi.ram_len_o[7:0]
+tb.MEM.Vsdram_axi.sdram_axi.ram_addr_w[31:0]
+tb.MEM.Vsdram_axi.sdram_axi.ram_write_data_w[31:0]
+@28
+tb.MEM.Vsdram_axi.sdram_axi.ram_accept_w
+@200
+-
+@28
+tb.MEM.Vsdram_axi.sdram_axi.ram_ack_w
+@22
+tb.MEM.Vsdram_axi.sdram_axi.ram_read_data_w[31:0]
+@1000200
+-RAM
+@200
+-
+@800200
+-SDRAM
+@820
+[color] 1
+tb.MEM.Vsdram_axi.sdram_axi.dbg_state[79:0]
+@28
+tb.MEM.Vsdram_axi.sdram_axi.sdram_clk_o
+@22
+tb.MEM.Vsdram_axi.sdram_axi.sdram_addr_o[12:0]
+@28
+tb.MEM.Vsdram_axi.sdram_axi.sdram_ba_o[1:0]
+tb.MEM.Vsdram_axi.sdram_axi.sdram_cas_o
+@22
+tb.MEM.Vsdram_axi.sdram_axi.sdram_data_input_i[15:0]
+@28
+tb.MEM.Vsdram_axi.sdram_axi.sdram_data_out_en_o
+@22
+tb.MEM.Vsdram_axi.sdram_axi.sdram_data_output_o[15:0]
+@28
+tb.MEM.Vsdram_axi.sdram_axi.sdram_dqm_o[1:0]
+tb.MEM.Vsdram_axi.sdram_axi.sdram_ras_o
+tb.MEM.Vsdram_axi.sdram_axi.sdram_we_o
+@1000200
+-SDRAM
+@200
+-
+[pattern_trace] 1
+[pattern_trace] 0
