@@ -95,6 +95,7 @@ parameter SDRAM_READ_LATENCY    = 2;
 //-----------------------------------------------------------------
 wire [ 31:0]  ram_addr_w;
 wire [  3:0]  ram_wr_w;
+wire          ram_wvalid_w;
 wire          ram_rd_w;
 wire          ram_accept_w;
 wire [ 31:0]  ram_write_data_w;
@@ -142,6 +143,7 @@ u_axi
     .ram_addr_o(ram_addr_w),
     .ram_accept_i(ram_accept_w),
     .ram_wr_o(ram_wr_w),
+    .ram_wvalid_o(ram_wvalid_w),
     .ram_rd_o(ram_rd_w),
     .ram_len_o(ram_len_w),
     .ram_write_data_o(ram_write_data_w),
@@ -166,6 +168,7 @@ u_core
     ,.rst_i(rst_i)
 
     ,.inport_wr_i(ram_wr_w)
+    ,.inport_wvalid_i(ram_wvalid_w)
     ,.inport_rd_i(ram_rd_w)
     ,.inport_len_i(ram_len_w)
     ,.inport_addr_i(ram_addr_w)

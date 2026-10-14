@@ -38,6 +38,7 @@ module sdram_axi_core
      input           clk_i
     ,input           rst_i
     ,input  [  3:0]  inport_wr_i
+    ,input           inport_wvalid_i
     ,input           inport_rd_i
     ,input  [  7:0]  inport_len_i
     ,input  [ 31:0]  inport_addr_i
@@ -126,13 +127,14 @@ localparam SDRAM_TRFC_CYCLES = (60 + (CYCLE_TIME_NS-1)) / CYCLE_TIME_NS;
 //-----------------------------------------------------------------
 wire [ 31:0]  ram_addr_w       = inport_addr_i;
 wire [  3:0]  ram_wr_w         = inport_wr_i;
+wire          ram_wvalid_w     = inport_wvalid_i;
 wire          ram_rd_w         = inport_rd_i;
 wire          ram_accept_w;
 wire [ 31:0]  ram_write_data_w = inport_write_data_i;
 wire [ 31:0]  ram_read_data_w;
 wire          ram_ack_w;
 
-wire          ram_req_w = (ram_wr_w != 4'b0) | ram_rd_w;
+wire          ram_req_w = ram_wvalid_w | ram_rd_w;
 
 assign inport_ack_o       = ram_ack_w;
 assign inport_read_data_o = ram_read_data_w;
@@ -294,7 +296,7 @@ begin
         next_state_r = STATE_IDLE;
 
         // Another pending write request (with no refresh pending)
-        if (!refresh_q && ram_req_w && (ram_wr_w != 4'b0))
+        if (!refresh_q && ram_req_w && ram_wvalid_w)
         begin
             // Open row hit
             if (row_open_q[addr_bank_w] && addr_row_w == active_row_q[addr_bank_w])

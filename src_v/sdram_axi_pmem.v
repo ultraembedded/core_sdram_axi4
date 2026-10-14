@@ -71,6 +71,7 @@ module sdram_axi_pmem
     ,output [  3:0]  axi_rid_o
     ,output          axi_rlast_o
     ,output [  3:0]  ram_wr_o
+    ,output          ram_wvalid_o
     ,output          ram_rd_o
     ,output [  7:0]  ram_len_o
     ,output [ 31:0]  ram_addr_o
@@ -149,7 +150,7 @@ end
 else
 begin
     // Burst continuation
-    if ((ram_wr_o != 4'b0 || ram_rd_o) && ram_accept_i)
+    if ((ram_wvalid_o || ram_rd_o) && ram_accept_i)
     begin
         if (req_len_q == 8'd0)
         begin
@@ -214,7 +215,7 @@ begin
     else if (ram_accept_i)
         req_hold_rd_q   <= 1'b0;
 
-    if ((|ram_wr_o) && !ram_accept_i)
+    if (ram_wvalid_o && !ram_accept_i)
         req_hold_wr_q   <= 1'b1;
     else if (ram_accept_i)
         req_hold_wr_q   <= 1'b0;
@@ -223,7 +224,7 @@ end
 //-----------------------------------------------------------------
 // Request tracking
 //-----------------------------------------------------------------
-wire       req_push_w = (ram_rd_o || (ram_wr_o != 4'b0)) && ram_accept_i;
+wire       req_push_w = (ram_rd_o || ram_wvalid_o) && ram_accept_i;
 reg [5:0]  req_in_r;
 
 wire       req_out_valid_w;
@@ -318,6 +319,7 @@ assign ram_addr_o       = addr_w;
 assign ram_write_data_o = axi_wdata_i;
 assign ram_rd_o         = rd_w;
 assign ram_wr_o         = wr_w ? axi_wstrb_i : 4'b0;
+assign ram_wvalid_o     = wr_w;
 assign ram_len_o        = axi_awvalid_i ? axi_awlen_i:
                           axi_arvalid_i ? axi_arlen_i : 8'b0;
 
